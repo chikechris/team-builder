@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import "./App.css";
 import Form from "./component/Form";
 
-function App() {}
+function App() {
+  return (
+    <div className="App">
+      <Form />
+    </div>
+  );
+}
 
 export default App;
