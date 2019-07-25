@@ -1,71 +1,74 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 
-export default function Form(props) {
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    role: ""
-  });
+function Form({
+  users,
+  handleChange,
+  handleSubmit,
+  memberToEdit,
+  setUsers,
+  saveArray
+}) {
+  useEffect(() => {
+    console.log("in useEffect", memberToEdit);
+    setUsers({ ...memberToEdit });
+  }, [memberToEdit]);
 
-  function handleChange(event) {
-    const updatedUser = { ...user, [event.target.name]: event.target.value };
-    setUser(updatedUser);
-  }
+  const mystyle = {
+    color: "white",
+    backgroundColor: "DodgerBlue",
+    padding: "5px",
+    margin: "10px",
+    fontFamily: "Arial"
+    // display: "flex"
+  };
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    props.setArrOfTeam([...props.arrOfTeam, user]);
-
-    console.log("user: ", user);
-  }
+  const mystylee = {
+    color: "white",
+    backgroundColor: "DodgerBlue",
+    padding: "5px",
+    margin: "10px",
+    fontFamily: "Arial",
+    display: "flex",
+    marginLeft: "39%"
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <fieldset>
-        <legend>Add Team Member</legend>
-        <div className="form-group row">
-          <label for="name" className="col-sm-2 col-form-label">
-            Name
-            <div className="col-sm-10">
-              <input
-                type="text"
-                className="form-control"
-                name="name"
-                placeholder="Enter your name"
-                value={user.name}
-                onChange={handleChange}
-              />
-            </div>
-          </label>
-        </div>
-        <div className="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            name="email"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-            value={user.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label for="exampleRole1">Role</label>
-          <input
-            type="role"
-            className="form-control"
-            name="role"
-            placeholder="Role"
-            onChange={handleChange}
-            value={user.role}
-          />
-        </div>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label style={mystyle}>Name:</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter your name"
+          value={users.name}
+          onChange={handleChange}
+          style={mystylee}
+        />
 
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </fieldset>
-    </form>
+        <label style={mystyle}>Email Address:</label>
+
+        <input
+          type="text"
+          name="email"
+          placeholder="Enter email"
+          value={users.email}
+          onChange={handleChange}
+          style={mystylee}
+        />
+        <label style={mystyle}>Role:</label>
+
+        <input
+          type="text"
+          name="role"
+          placeholder="Role"
+          value={users.role}
+          onChange={handleChange}
+          style={mystylee}
+        />
+        <button onClick={saveArray}>Add New Member!</button>
+      </form>
+    </div>
   );
 }
+
+export default Form;
