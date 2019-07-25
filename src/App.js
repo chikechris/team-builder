@@ -49,6 +49,7 @@ function App() {
     padding: "10px",
     fontFamily: "Arial"
   };
+
   return (
     <div className="App">
       <h1 style={mystyle}>Add Team Members: </h1>
@@ -69,7 +70,10 @@ function App() {
             <h3>Name: {member.name}</h3>
             <h4>Role: {member.role}</h4>
             <p>Email: {member.email}</p>
-            <button onClick={() => handleMemberToEdit(member)}>
+            <button
+              style={{ backgroundColor: "lightblue" }}
+              onClick={() => handleMemberToEdit(member)}
+            >
               Edit User!
             </button>
           </div>

@@ -65,7 +65,9 @@ function Form({
           onChange={handleChange}
           style={mystylee}
         />
-        <button onClick={saveArray}>Add New Member!</button>
+        <button style={{ backgroundColor: "lightblue" }} onClick={saveArray}>
+          Add New Member!
+        </button>
       </form>
     </div>
   );
